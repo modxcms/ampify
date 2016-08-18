@@ -24,4 +24,8 @@ Install via the MODX Revolution Package Manager.
 
 The default Plugin property values are:
 
-- 
+- `amp_context` = `"amp"` If this property is empty or doesn't contain a valid Context key, the Plugin effectively does nothing.
+- `amp_template` = `""` This property is required. At least 1 Template must be dedicated to an AMP view, and it's ID set here, for the Plugin to work.
+- `amp_tv` = `""` If a valid TV **name** is entered here, it will transform the Plugin's actions in the following way:
+    - `OnLoadWebDocument` it will switch the Template of the Resource to the one specified in the TV with name `amp_tv`, falling back to the default set in `amp_template`
+    - `OnDocFormSave` it will _only_ add the Resource to the table for automatic routing if there's a truth-y value in the TV with name `amp_tv`. If the TV is empty or false-y, it will remove the Resource from the table. This provides primitive "remove" functionality until such time a CMP is made to manage ContextResources.
