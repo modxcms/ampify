@@ -26,13 +26,20 @@
                     "name": "amp_template"
                     ,"description": "ID of Template with AMP markup"
                 },{
-                    "name": "amp_tv_id"
-                    ,"description": "Optional: ID of TV specifying AMP Template for each Resource"
+                    "name": "amp_tv"
+                    ,"description": "Optional: NAME of TV specifying AMP Template for each Resource e.g. amp_template"
                 }]
             }]
             ,"templates": [{
                 "name": "Sample AMP Template"
                 ,"file": "amp_template.template.tpl"
+            }]
+            ,"tvs": [{
+                "name": "amp_template"
+                ,"caption": "AMP Template ID"
+                ,"description": "Select the AMP Template to be used for this Resource"
+                ,"type": "listbox"
+                ,"inputOptionValues": "@SELECT templatename, id FROM modx_site_templates"
             }]
         }
     }
