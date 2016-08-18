@@ -8,7 +8,7 @@ AMPIFY is a MODX Extra that includes a toolset to easily serve AMP HTML for Goog
 
 ## What does it do?
 
-The AMPIFY Plugin is triggered when a request is made to a specified AMP Context. (Context routing and setup are outside the scope of this Extra, but the [documentation](#) provides an example implementation.) 
+The AMPIFY Plugin is triggered when a request is made to a specified AMP Context. (Context routing and setup are outside the scope of this Extra, but there's an example implementation below.) 
 
 The AMP Context will automatically route requests to Resources that have been added to the ContextResource table. Resources are added automatically when they are saved. 
 
@@ -29,3 +29,5 @@ The default Plugin property values are:
 - `amp_tv` = `""` If a valid TV **name** is entered here, it will transform the Plugin's actions in the following way:
     - `OnLoadWebDocument` it will switch the Template of the Resource to the one specified in the TV with name `amp_tv`, falling back to the default set in `amp_template`
     - `OnDocFormSave` it will _only_ add the Resource to the table for automatic routing if there's a truth-y value in the TV with name `amp_tv`. If the TV is empty or false-y, it will remove the Resource from the table. This provides primitive "remove" functionality until such time a CMP is made to manage ContextResources.
+
+## Example Implementation
