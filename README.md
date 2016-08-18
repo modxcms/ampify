@@ -39,7 +39,7 @@ A workaround for excluding Resources from the AMP view, would be to use the `amp
 
 ### AMP TV
 
-If a value is provided in the `amp_tv` Plugin property, then the Resource will _only_ be added to the ContextResource table, if the Resource has a valid Template ID set in the TV. In that case, it will override the Template ID in the Plugin's `amp_template` property.
+If a value is provided in the `amp_tv` Plugin property, then the Resource will _only_ be added to the ContextResource table, if the Resource has a valid Template ID set in the TV. In that case, it will override the Template ID in the Plugin's `amp_template` property `OnLoadWebDocument` _for that Resource_.
 
 If the TV is empty for a given Resource, that Resource will be removed from the ContextResource table.
 
