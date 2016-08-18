@@ -1,0 +1,36 @@
+{
+    "name": "AMPIFY"
+    ,"lowCaseName": "ampify"
+    ,"description": "Ampify your MODX Resources."
+    ,"author": "YJ Tso, Wayne Roddy"
+    ,"version": "0.0.1"
+    ,"package":{
+        "actions": [{
+            "id": 1
+            ,"controller": "index"
+        }]
+        ,"menus": [{
+            "text": "package"
+            ,"action": 1
+        }]
+        ,"elements": {
+            "plugins": [{
+                "name": "AMPIFY"
+                ,"file": "ampify.plugin.php"
+                ,"events": ["OnLoadWebDocument","OnDocFormSave"]
+                ,"properties": [{
+                        "name": "amp_context"
+                        ,"description": "Key of the Context in which to render AMP pages"
+                        ,"value": "amp"
+                    },{
+                        "name": "amp_template"
+                        ,"description": "ID of Template with AMP markup"
+                }]
+            }]
+            ,"templates": [{
+                "name": "Sample AMP Template"
+                ,"file": "amp_template.template.tpl"
+            }]
+        }
+    }
+}

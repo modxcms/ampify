@@ -1,2 +1,2 @@
-# ampify
-AMPIFY your MODX Resources
+# _modxExtraTpl
+Just the basic folder structure
