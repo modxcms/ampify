@@ -19,12 +19,15 @@
                 ,"file": "ampify.plugin.php"
                 ,"events": ["OnLoadWebDocument","OnDocFormSave"]
                 ,"properties": [{
-                        "name": "amp_context"
-                        ,"description": "Key of the Context in which to render AMP pages"
-                        ,"value": "amp"
-                    },{
-                        "name": "amp_template"
-                        ,"description": "ID of Template with AMP markup"
+                    "name": "amp_context"
+                    ,"description": "Key of the Context in which to render AMP pages"
+                    ,"value": "amp"
+                },{
+                    "name": "amp_template"
+                    ,"description": "ID of Template with AMP markup"
+                },{
+                    "name": "amp_tv_id"
+                    ,"description": "Optional: ID of TV specifying AMP Template for each Resource"
                 }]
             }]
             ,"templates": [{
