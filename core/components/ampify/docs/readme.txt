@@ -35,7 +35,7 @@ This mode has the advantage of rendering the AMP view at the same URI as the req
 
 However, it has the disadvantage that Resources cannot be specifically included or excluded from having an AMP view—the Plugin will fire if the GET param is present. Also, **the AMP view will not be cacheable**. This can cause serious performance issues, depending on the complexity of the AMP Template used.
 
-A workaround for excluding Resources from the AMP view, would be to use the `amp_tv` property, and for Resources you want to exclude from having an AMP view, set the TV value to the same Template, that the Resource uses natively. However, if the URL param is set, **the Resource will not be cacheable**. There's no workaround in this version of the Extra, for the caching issue.
+A workaround for excluding Resources from the AMP view, would be to use the `amp_tv` property, and for Resources you want to exclude from having an AMP view, set the TV value to the same Template, that the Resource uses natively. However, if the URL param is set, **the Resource will not be cacheable**. There's no workaround in this version of the Extra, for the caching limitation in 'param' mode.
 
 ### AMP TV
 
