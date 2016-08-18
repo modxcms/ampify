@@ -59,10 +59,14 @@ switch ($event) {
     case 'OnDocFormSave':
 
         // Probably overly paranoid
-        if ($modx->context->get('key') !== 'mgr') return;
+        if ($modx->context->get('key') !== 'mgr') {
+            break;
+        }
         
         // Check Resource
-        if (!($resource instanceof modResource)) return;
+        if (!($resource instanceof modResource)) {
+            break;
+        }
         
         // Check Resource AMP TV
         if ($countTv === 1) {
