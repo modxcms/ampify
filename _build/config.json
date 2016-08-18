@@ -3,7 +3,7 @@
     ,"lowCaseName": "ampify"
     ,"description": "Ampify your MODX Resources."
     ,"author": "YJ Tso, Wayne Roddy"
-    ,"version": "0.0.1-dev1"
+    ,"version": "0.0.2-dev1"
     ,"package":{
         "actions": [{
             "id": 1
@@ -21,13 +21,16 @@
                 ,"properties": [{
                     "name": "amp_context"
                     ,"description": "Key of the Context in which to render AMP pages"
-                    ,"value": "amp"
+                    ,"value": ""
                 },{
                     "name": "amp_template"
                     ,"description": "ID of Template with AMP markup"
                 },{
                     "name": "amp_tv"
                     ,"description": "Optional: NAME of TV specifying AMP Template for each Resource e.g. amp_template"
+                },{
+                    "name": "amp_url_param"
+                    ,"description": "Key of GET param to trigger AMP Template rendering. Overrides amp_context if set."
                 }]
             }]
             ,"templates": [{

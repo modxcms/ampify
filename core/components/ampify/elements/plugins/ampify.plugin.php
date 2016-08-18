@@ -8,11 +8,24 @@
  * 
  **/
 
+// AMPIFY Url Param
+$amp_url_param = $modx->getOption('amp_url_param', $scriptProperties, '');
+
 // AMPIFY Context
-$amp_context = $modx->getOption('amp_context', $scriptProperties, 'amp');
-$countCtx = $modx->getCount('modContext', array('key' => $amp_context));
-if ($countCtx !== 1) {
-    $modx->log(modX::LOG_LEVEL_ERROR, 'AMPIFY could not find a Context with key: ' . $amp_context);
+$amp_context = $modx->getOption('amp_context', $scriptProperties, '');
+
+// AMPIFY Mode
+$mode = 0;
+if (!empty($amp_url_param)) {
+    $mode = 'param';
+} elseif (!empty($amp_context)) {
+    $countCtx = $modx->getCount('modContext', array('key' => $amp_context));
+    if ($countCtx === 1) {
+        $mode = 'context';
+    }
+}
+if ($mode === 0) {
+    $modx->log(modX::LOG_LEVEL_WARN, 'AMPIFY requires at least a valid amp_context or an amp_url_param specified.');
     return;
 }
 
@@ -33,12 +46,13 @@ switch ($event) {
     
     case 'OnLoadWebDocument':
 
-        // Only fire on AMP Context
-        if ($modx->context->get('key') !== $amp_context) {
+        // Escape conditions
+        if ($mode === 'param' && !isset($_GET[$amp_url_param])) {
             break;
         }
-
-        // Check Resource
+        if ($mode === 'context' && ($modx->context->get('key') !== $amp_context)) {
+            break;
+        }
         if (!($modx->resource instanceof modResource)) {
             break;
         }
@@ -49,7 +63,10 @@ switch ($event) {
             $countTvTpl = $modx->getCount('modTemplate', $tvValue);
             if ($countTvTpl === 1) $amp_template = $tvValue;
         }
-
+        
+        // Don't cache 'param' mode result
+        if ($mode === 'param') $modx->resource->set('cacheable', 0);
+        
         // Set runtime resource property
         $modx->resource->set('template', $amp_template);
         
@@ -60,6 +77,11 @@ switch ($event) {
 
         // Probably overly paranoid
         if ($modx->context->get('key') !== 'mgr') {
+            break;
+        }
+        
+        // If $mode isn't 'context', stop doing ContextResource actions
+        if ($mode !== 'context') {
             break;
         }
         
