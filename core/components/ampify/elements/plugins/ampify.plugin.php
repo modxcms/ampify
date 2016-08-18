@@ -9,7 +9,7 @@
  **/
 
 // AMPIFY Context
-$amp_context = $modx->getOption('amp_context', $scriptProperties, 'amp', true);
+$amp_context = $modx->getOption('amp_context', $scriptProperties, 'amp');
 $countCtx = $modx->getCount('modContext', array('key' => $amp_context));
 if ($countCtx !== 1) {
     $modx->log(modX::LOG_LEVEL_ERROR, 'AMPIFY could not find a Context with key: ' . $amp_context);
