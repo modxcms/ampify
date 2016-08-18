@@ -26,8 +26,7 @@ if ($countTpl !== 1) {
 
 // AMPIFY TV
 $amp_tv = $modx->getOption('amp_tv', $scriptProperties, '');
-$tvCol = (is_int($amp_tv)) ? 'id' : 'name';
-$countTv = $modx->getCount('modTemplateVar', array($tvCol => $amp_tv));
+$countTv = $modx->getCount('modTemplateVar', array('name' => $amp_tv));
 
 $event = $modx->event->name;
 switch ($event) {
@@ -50,7 +49,7 @@ switch ($event) {
             $countTvTpl = $modx->getCount('modTemplate', $tvValue);
             if ($countTvTpl === 1) $amp_template = $tvValue;
         }
-        
+
         // Set runtime resource property
         $modx->resource->set('template', $amp_template);
         
@@ -68,7 +67,6 @@ switch ($event) {
         // Check Resource AMP TV
         if ($countTv === 1) {
             $tvValue = $resource->getTVValue($amp_tv);
-            if (!$tvValue) break;
         }
         
         // Set criteria for ContextResource object
@@ -78,10 +76,16 @@ switch ($event) {
         );
         
         // Check ContextResource
-        $countCtxRes = $modx->getCount('modContextResource', $criteria);
+        $ctxRes = $modx->getObject('modContextResource', $criteria);
+        
+        // Remove if using the AMP TV and there' no tvValue
+        if ($countTv === 1 && !$tvValue && $ctxRes instanceof modContextResource) {
+            $ctxRes->remove();
+            break;
+        }
         
         // Create if it doesn't exist
-        if ($countCtxRes < 1) {
+        if ($ctxRes === null) {
             
             $rc = $modx->newObject('modContextResource');
             // Use set(). It's not an xPDOSimpleObject            
