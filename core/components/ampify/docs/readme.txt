@@ -1,10 +1,10 @@
 # Ampify
 
-Turn a MODX Context into a router for Google's [Accelerated Mobile Pages](https://www.ampproject.org/) aka "AMP".
+Effortless Google [Accelerated Mobile Pages](https://www.ampproject.org/), aka "AMP", for MODX Revolution.
 
 ## What is it?
 
-Ampify is a MODX Extra that includes a toolset to easily serve AMP HTML for Google's search results pages. The package includes a Plugin, and a sample AMP Template.
+**Ampify** is a MODX Revolution Extra that includes a toolset to easily serve AMP HTML for Google's search results pages. The package includes a Plugin, and a sample AMP Template.
 
 ## What does it do?
 
