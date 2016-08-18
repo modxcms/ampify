@@ -1,9 +1,8 @@
 <!doctype html>
 <html amp lang="en">
   <head>
-    <meta charset="[[++modx_charset]]">
+    <meta charset="utf-8">
     <title>[[*pagetitle]]</title>
-    <base href="//[[++http_host]]/">
     <link rel="canonical" href="[[~[[*id]]? &scheme=`full`]]" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <script type="application/ld+json">
@@ -32,7 +31,7 @@
             "@type": "ImageObject",
             "width": "[[*page_img:imgattr=`width`]]",
             "height": "[[*page_img:imgattr=`height`]]",
-            "url":"[[*page_img]]"
+            "url":"/[[*page_img]]"
         }
       }
     </script>
@@ -44,11 +43,7 @@
   </head>
   <body>
     <h1>[[*pagetitle]]</h1>
-    <amp-img src="[[*page_img]]" alt="[[*pagetitle]]" width="[[*page_img:imgattr=`width`]]" height="[[*page_img:imgattr=`height`]]" layout="responsive"></amp-img>
-    <div>
-        <p>Any TV Tag can be used in the AMP Template.</p> 
-        [[*mxg-ad:tag]]: [[*mxg-ad:default=`No value in this TV.`]]
-    </div>
+    <amp-img src="/[[*page_img]]" alt="[[*pagetitle]]" width="[[*page_img:imgattr=`width`]]" height="[[*page_img:imgattr=`height`]]" layout="responsive"></amp-img>
     <article>[[*content]]</article>
   </body>
 </html>
