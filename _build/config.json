@@ -3,7 +3,7 @@
     ,"lowCaseName": "ampify"
     ,"description": "Ampify your MODX Resources."
     ,"author": "YJ Tso, Wayne Roddy"
-    ,"version": "0.0.2-dev1"
+    ,"version": "0.0.2-dev2"
     ,"package":{
         "actions": [{
             "id": 1
