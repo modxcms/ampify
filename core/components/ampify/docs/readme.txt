@@ -24,6 +24,8 @@ This mode has the advantage of being able to include and exclude Resources from 
 
 However, it has the disadvantage that AMP views will be rendered at a different URI than the canonical. At the minimum, the Context's base_url will be prefixed, for example: `/amp/resource-alias.html` versus `/resource-alias.html`
 
+Also, if you have a lot of pre-existing Resources for which you want to provide an AMP view, you'll need to add them all to the ContextResource table by triggering the `OnDocFormSave` Event on all of them—or modify the ContextResource table yourself, programmatically. Until the CMP with bulk actions is developed (in a later version soon-to-come) this is a drawback of the 'context' mode.
+
 ### Param Mode
 
 In 'param' mode, the Plugin action is triggered when the GET param specified is set, in the URL string. This will override the `amp_context` property. In this mode:
@@ -33,9 +35,13 @@ In 'param' mode, the Plugin action is triggered when the GET param specified is 
 
 This mode has the advantage of rendering the AMP view at the same URI as the requested Resource. Nothing about the Resource's URI needs to change, except the presence of the specified GET param.
 
-However, it has the disadvantage that Resources cannot be specifically included or excluded from having an AMP view—the Plugin will fire if the GET param is present. Also, **the AMP view will not be cacheable**. This can cause serious performance issues, depending on the complexity of the AMP Template used.
+Also, the AMP view becomes immediately enabled for all your Resources, without any additional modifications of database records.
 
-A workaround for excluding Resources from the AMP view, would be to use the `amp_tv` property, and for Resources you want to exclude from having an AMP view, set the TV value to the same Template, that the Resource uses natively. However, if the URL param is set, **the Resource will not be cacheable**. There's no workaround in this version of the Extra, for the caching limitation in 'param' mode.
+However, it has the disadvantage that Resources cannot be specifically included or excluded from having an AMP view—the Plugin will fire for all Resources if the GET param is present. 
+
+Another, perhaps more critical drawback, is that **the AMP view will not be cacheable**. This can cause serious performance issues, depending on the complexity of the AMP Template used. It's true that Google caches the AMP views, but it opens a door for anyone to trigger high loads on your site, if your AMP Template requires processing.
+
+A workaround for excluding Resources from the AMP view, would be to use the `amp_tv` property, and for Resources you want to exclude from having an AMP view, set the TV value to the same Template that the Resource uses natively. However, if the URL param is set, **the Resource will not be cacheable**. There's no workaround in this version of Ampify, for the caching limitation in 'param' mode.
 
 ### AMP TV
 
