@@ -22,7 +22,7 @@ The AMP Context will automatically route requests to Resources that have been ad
 
 This mode has the advantage of being able to include and exclude Resources from having an AMP view. 
 
-However, it has the disadvantage that Resources with duplicate aliases, _even those in different Contexts or with different parent Resources_, may not render an AMP view correctly, and the URIs for the AMP views will not respect the full alias path. These issues are really only of concern if the System Setting `use_alias_path` is enabled.
+However, it has the disadvantage that AMP views will be rendered at a different URI than the canonical. At the minimum, the Context's base_url will be prefixed, for example: `/amp/resource-alias.html` versus `/resource-alias.html`
 
 ### Param Mode
 
