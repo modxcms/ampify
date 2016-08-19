@@ -24,6 +24,8 @@ This mode has the advantage of being able to include and exclude Resources from 
 
 However, it has the disadvantage that AMP views will be rendered at a different URI than the canonical. At the minimum, the Context's base_url will be prefixed, for example: `/amp/resource-alias.html` versus `/resource-alias.html`
 
+Also, if you have a lot of pre-existing Resources for which you want to provide an AMP view, you'll need to add them all to the ContextResource table by triggering the `OnDocFormSave` Event on all of them—or modify the ContextResource table yourself, programmatically. Until the CMP with bulk actions is developed (in a later version soon-to-come) this is a drawback of the 'context' mode.
+
 ### Param Mode
 
 In 'param' mode, the Plugin action is triggered when the GET param specified is set, in the URL string. This will override the `amp_context` property. In this mode:
