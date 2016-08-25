@@ -67,3 +67,57 @@ The default Plugin property values are:
     - `OnDocFormSave` it will _only_ add the Resource to the table for automatic routing if there's a truth-y value in the TV with name `amp_tv`. If the TV is empty or false-y, it will remove the Resource from the table. This provides primitive "remove" functionality until such time a CMP is made to manage ContextResources.
 
 ## Example Implementation
+
+In this example, we'll install Ampify into an almost fresh MODX install, and use [Context Gateway](https://github.com/modxcms/context-gateway/) for Context routing. Both can be installed via the Extras Installer:
+
+![Extras Installer](https://www.dropbox.com/s/bjtk7auqs29a2tc/Screenshot%202016-08-24%2013.34.55.png?dl=1)
+
+### Create a new Context. 
+
+Hover over the cog icon in the top-right corner of the Manager, to reveal the "Contexts" menu item.
+
+![Contexts menu item](https://www.dropbox.com/s/q3667nsqlkdftrm/Screenshot%202016-08-24%2013.35.02.png?dl=1)
+
+In the Contexts view, click "Create New".
+
+![Create Context button](https://www.dropbox.com/s/0b1wx1jst8zrzoe/Screenshot%202016-08-24%2013.35.13.png?dl=1)
+
+Give the new Context a key, a user-friendly name, and optionally a description.
+
+![Create Context window](https://www.dropbox.com/s/ij1x80k4kjcw814/Screenshot%202016-08-24%2013.35.24.png?dl=1)
+
+Once the Context is created, you'll see it in the grid-list of Contexts. Right-click on it and select "Update Context".
+
+![Update Context](https://www.dropbox.com/s/xtwbmsga0gywsrl/Screenshot%202016-08-25%2008.34.43.png?dl=1)
+
+In the Context Edit view, select the tab "Context Settings".
+
+![Context Settings tab](https://www.dropbox.com/s/bdom7y9nhdzvwb4/Screenshot%202016-08-25%2008.35.20.png?dl=1)
+
+If you're not familiar with Context Settings, here are the documentation pages for [Contexts](https://rtfm.modx.com/revolution/2.x/administering-your-site/contexts) and [System Settings](https://rtfm.modx.com/revolution/2.x/administering-your-site/settings), which you might find useful to review before moving on to the next step.
+
+Click the "Create New" button. You'll need to create 5 new Context Settings, at a minimum:
+
+1. `ctx_alias` is a requirement of the Context Gateway router, and defines the URI-bit for this Context. You'll use this string again in other settings.
+![ctx_alias setting](https://www.dropbox.com/s/maeqsabh6xgm01x/Screenshot%202016-08-24%2013.37.42.png?dl=1)
+2. `site_url` overrides the default System Setting, appending the `ctx_alias`.
+![site_url Context setting](https://www.dropbox.com/s/h0phk0a3jxecyac/Screenshot%202016-08-24%2013.37.26.png?dl=1)
+Notice the syntax `{site_url}amp/`. The part in curly braces references the default MODX `site_url` dynamically.
+3. `base_url` does essentially the same as `site_url` but for a specific component of the URL.
+![base_url setting](https://www.dropbox.com/s/rrudd40yilex9dr/Screenshot%202016-08-24%2013.37.34.png?dl=1)
+4. `site_start` and `error_page` should both have, as their values, the ID of the Resource that MODX will render as the "homepage" of the new Context. If you haven't created a Resource in the new Context yet, you can do so without leaving the current view, by right-clicking on the Context node in the Resource Tree, and selecting the "Quick Create" » "Document" option:
+![Quick Create](https://www.dropbox.com/s/g0l2ysnn600goei/Screenshot%202016-08-25%2008.44.35.png?dl=1)
+Give the new Resource a title, and ensure it's published. Once you hit save, the Tree will refresh and you'll see the new Resource with it's ID in parenthesis:
+![Resource Tree](https://www.dropbox.com/s/0ws3ph6etnwx83p/Screenshot%202016-08-25%2008.47.02.png?dl=1)
+
+### A Few System Settings
+
+If you haven't already enabled Friendly URLs for your site, you'll need to do so for Ampify and Context Gateway to work. Hover over the cog icon again and chooose "System Settings".
+
+![System Settings menu item](https://www.dropbox.com/s/d921uwv7985tnaj/Screenshot%202016-08-25%2008.49.39.png?dl=1)
+
+At the top of the grid, choose the "Friendly URL" option from the "Area" dropdown:
+
+![Area dropdown](https://www.dropbox.com/s/ygzp0f122kxi6nu/Screenshot%202016-08-24%2013.39.08.png?dl=1)
+
+
