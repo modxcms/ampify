@@ -110,7 +110,7 @@ Notice the syntax `{site_url}amp/`. The part in curly braces references the defa
 Give the new Resource a title, and ensure it's published. Once you hit save, the Tree will refresh and you'll see the new Resource with it's ID in parenthesis:
 ![Resource Tree](https://www.dropbox.com/s/0ws3ph6etnwx83p/Screenshot%202016-08-25%2008.47.02.png?dl=1)
 
-### A Few System Settings
+### Friendly URL System Setting
 
 If you haven't already enabled Friendly URLs for your site, you'll need to do so for Ampify and Context Gateway to work. Hover over the cog icon again and chooose "System Settings".
 
@@ -120,4 +120,39 @@ At the top of the grid, choose the "Friendly URL" option from the "Area" dropdow
 
 ![Area dropdown](https://www.dropbox.com/s/ygzp0f122kxi6nu/Screenshot%202016-08-24%2013.39.08.png?dl=1)
 
+Locate the "Use Friendly URLs" setting and set it to "Yes".
+
+![FURLs](https://www.dropbox.com/s/tldqixi3od1zxbx/Screenshot%202016-08-24%2013.39.17.png?dl=1)
+
+### Plugin Properties
+
+Next you'll setup the AMPIFY Plugin's properties, without which the Plugin doesn't fire. You'll need the ID of the AMP Template that you want to use. Ampify installs a sample Template. 
+
+![sample AMP Template](https://www.dropbox.com/s/4z6y8btmhrlldxk/Screenshot%202016-08-24%2013.40.10.png?dl=1)
+
+In this installation the ID is `4`. In the "Elements" tab of the Tree, open the "Plugins" section if not already open, and locate the AMPIFY Plugin:
+
+![Elements Tree](https://www.dropbox.com/s/pchhh6x8r2ygo6v/Screenshot%202016-08-25%2008.57.17.png?dl=1)
+
+![AMPIFY Plugin edit](https://www.dropbox.com/s/qnlzvgp2ckcpovo/Screenshot%202016-08-24%2013.40.16.png?dl=1)
+
+In the Plugin Edit view, select the "Properties" tab:
+
+![Plugin properties](https://www.dropbox.com/s/4n2v1hlidff6o0d/Screenshot%202016-08-24%2013.41.06.png?dl=1)
+
+Click the button "Add Property Set". It's recommended to use a custom property set that will not be overwritten when you update the Extra.
+
+![Add Property Set](https://www.dropbox.com/s/15azi5ew1qaospd/Screenshot%202016-08-25%2008.57.54.png?dl=1)
+
+In the "Add Property Set" window, select "Create New Property Set" and give it a name:
+
+![Add Property Set Window](https://www.dropbox.com/s/88ykgwu1gaxf8rt/Screenshot%202016-08-24%2013.41.32.png?dl=1)
+
+Hit save. In the property set dropdown, select your new set:
+
+![Dropdown](https://www.dropbox.com/s/m1rpirfjq6ytu84/Screenshot%202016-08-24%2013.41.41.png?dl=1)
+
+Modify the property values, as per your desired configuration. In this implementation, we'll add the Context Key and Template ID:
+
+![Property set for AMP](https://www.dropbox.com/s/yg6o0byqa23o6c0/Screenshot%202016-08-25%2009.00.07.png?dl=1)
 
