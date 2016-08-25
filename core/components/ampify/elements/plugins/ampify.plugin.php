@@ -9,17 +9,17 @@
  **/
 
 // AMPIFY Url Param
-$amp_url_param = $modx->getOption('amp_url_param', $scriptProperties, '');
+$ampUrlParam = $modx->getOption('amp_url_param', $scriptProperties, '');
 
 // AMPIFY Context
-$amp_context = $modx->getOption('amp_context', $scriptProperties, '');
+$ampContext = $modx->getOption('amp_context', $scriptProperties, '');
 
 // AMPIFY Mode
 $mode = 0;
-if (!empty($amp_url_param)) {
+if (!empty($ampUrlParam)) {
     $mode = 'param';
-} elseif (!empty($amp_context)) {
-    $countCtx = $modx->getCount('modContext', array('key' => $amp_context));
+} elseif (!empty($ampContext)) {
+    $countCtx = $modx->getCount('modContext', array('key' => $ampContext));
     if ($countCtx === 1) {
         $mode = 'context';
     }
@@ -30,16 +30,16 @@ if ($mode === 0) {
 }
 
 // AMPIFY Template
-$amp_template = $modx->getOption('amp_template', $scriptProperties, '');
-$countTpl = $modx->getCount('modTemplate', $amp_template);
+$ampTemplate = $modx->getOption('amp_template', $scriptProperties, '');
+$countTpl = $modx->getCount('modTemplate', $ampTemplate);
 if ($countTpl !== 1) {
     $modx->log(modX::LOG_LEVEL_ERROR, 'AMPIFY requires a valid, default Template ID');
     return;
 }
 
 // AMPIFY TV
-$amp_tv = $modx->getOption('amp_tv', $scriptProperties, '');
-$countTv = $modx->getCount('modTemplateVar', array('name' => $amp_tv));
+$ampTv = $modx->getOption('amp_tv', $scriptProperties, '');
+$countTv = $modx->getCount('modTemplateVar', array('name' => $ampTv));
 
 $event = $modx->event->name;
 switch ($event) {
@@ -47,10 +47,10 @@ switch ($event) {
     case 'OnLoadWebDocument':
 
         // Escape conditions
-        if ($mode === 'param' && !isset($_GET[$amp_url_param])) {
+        if ($mode === 'param' && !isset($_GET[$ampUrlParam])) {
             break;
         }
-        if ($mode === 'context' && ($modx->context->get('key') !== $amp_context)) {
+        if ($mode === 'context' && ($modx->context->get('key') !== $ampContext)) {
             break;
         }
         if (!($modx->resource instanceof modResource)) {
@@ -59,16 +59,16 @@ switch ($event) {
         
         // Check Resource AMP TV
         if ($countTv === 1) {
-            $tvValue = $modx->resource->getTVValue($amp_tv);
+            $tvValue = $modx->resource->getTVValue($ampTv);
             $countTvTpl = $modx->getCount('modTemplate', $tvValue);
-            if ($countTvTpl === 1) $amp_template = $tvValue;
+            if ($countTvTpl === 1) $ampTemplate = $tvValue;
         }
         
         // Don't cache 'param' mode result
         if ($mode === 'param') $modx->resource->set('cacheable', 0);
         
         // Set runtime resource property
-        $modx->resource->set('template', $amp_template);
+        $modx->resource->set('template', $ampTemplate);
         
         // Move on
         break;
@@ -92,12 +92,12 @@ switch ($event) {
         
         // Check Resource AMP TV
         if ($countTv === 1) {
-            $tvValue = $resource->getTVValue($amp_tv);
+            $tvValue = $resource->getTVValue($ampTv);
         }
         
         // Set criteria for ContextResource object
         $criteria = array(
-            'context_key' => $amp_context,
+            'context_key' => $ampContext,
             'resource' => $resource->get('id'),
         );
         
@@ -114,9 +114,7 @@ switch ($event) {
         if ($ctxRes === null) {
             
             $rc = $modx->newObject('modContextResource');
-            // Use set(). It's not an xPDOSimpleObject            
-            $rc->set('context_key', $criteria['context_key']);
-            $rc->set('resource', $criteria['resource']);
+            $rc->fromArray($criteria, '', true); //set pk
             // Save
             if (!$rc->save()) {
                 $modx->log(modX::LOG_LEVEL_ERROR, 'AMPIFY could not save modContextResource: ' . print_r($criteria, true));
