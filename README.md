@@ -99,15 +99,25 @@ If you're not familiar with Context Settings, here are the documentation pages f
 Click the "Create New" button. You'll need to create 5 new Context Settings, at a minimum:
 
 1. `ctx_alias` is a requirement of the Context Gateway router, and defines the URI-bit for this Context. You'll use this string again in other settings.
+
 ![ctx_alias setting](https://www.dropbox.com/s/maeqsabh6xgm01x/Screenshot%202016-08-24%2013.37.42.png?dl=1)
+
 2. `site_url` overrides the default System Setting, appending the `ctx_alias`.
+
 ![site_url Context setting](https://www.dropbox.com/s/h0phk0a3jxecyac/Screenshot%202016-08-24%2013.37.26.png?dl=1)
+
 Notice the syntax `{site_url}amp/`. The part in curly braces references the default MODX `site_url` dynamically.
+
 3. `base_url` does essentially the same as `site_url` but for a specific component of the URL.
+
 ![base_url setting](https://www.dropbox.com/s/rrudd40yilex9dr/Screenshot%202016-08-24%2013.37.34.png?dl=1)
+
 4. `site_start` and `error_page` should both have, as their values, the ID of the Resource that MODX will render as the "homepage" of the new Context. If you haven't created a Resource in the new Context yet, you can do so without leaving the current view, by right-clicking on the Context node in the Resource Tree, and selecting the "Quick Create" » "Document" option:
+
 ![Quick Create](https://www.dropbox.com/s/g0l2ysnn600goei/Screenshot%202016-08-25%2008.44.35.png?dl=1)
+
 Give the new Resource a title, and ensure it's published. Once you hit save, the Tree will refresh and you'll see the new Resource with it's ID in parenthesis:
+
 ![Resource Tree](https://www.dropbox.com/s/0ws3ph6etnwx83p/Screenshot%202016-08-25%2008.47.02.png?dl=1)
 
 ### Friendly URL System Setting
@@ -156,3 +166,16 @@ Modify the property values, as per your desired configuration. In this implement
 
 ![Property set for AMP](https://www.dropbox.com/s/yg6o0byqa23o6c0/Screenshot%202016-08-25%2009.00.07.png?dl=1)
 
+Save the property set.
+
+![Save property set](https://www.dropbox.com/s/vaptd1jvv1lptbc/Screenshot%202016-08-25%2009.17.28.png?dl=1)
+
+You'll also need to select the custom property set for the Plugin's Event triggers. Go to the "System Events" tab, and select the custom property set for both enabled Events:
+
+![Plugin Events](https://www.dropbox.com/s/340mkcn5dtua0pf/Screenshot%202016-08-25%2009.19.06.png?dl=1)
+
+Don't forget to "Save" the Plugin!
+
+![Save Plugin](https://www.dropbox.com/s/44rseg3gfbwuzj2/Screenshot%202016-08-25%2009.19.22.png?dl=1)
+
+Now the Plugin should be running in 'context' mode. When you save a Resource, it will be added to the `ContextResource` table for the `amp` Context. The AMP view for the Resource will be a the Resource's URI, prefixed with the `ctx_alias`:  `amp/`.
