@@ -67,3 +67,5 @@ The default Plugin property values are:
     - `OnDocFormSave` it will _only_ add the Resource to the table for automatic routing if there's a truth-y value in the TV with name `amp_tv`. If the TV is empty or false-y, it will remove the Resource from the table. This provides primitive "remove" functionality until such time a CMP is made to manage ContextResources.
 
 ## Example Implementation
+
+Check out the README on github.com: [https://github.com/modxcms/ampify](https://github.com/modxcms/ampify)
