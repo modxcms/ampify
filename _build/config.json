@@ -3,17 +3,9 @@
     ,"lowCaseName": "ampify"
     ,"description": "Ampify your MODX Resources."
     ,"author": "YJ Tso, Wayne Roddy"
-    ,"version": "0.0.4-beta1"
+    ,"version": "0.1.0-dev2"
     ,"package":{
-        "actions": [{
-            "id": 1
-            ,"controller": "index"
-        }]
-        ,"menus": [{
-            "text": "package"
-            ,"action": 1
-        }]
-        ,"elements": {
+        "elements": {
             "plugins": [{
                 "name": "AMPIFY"
                 ,"file": "ampify.plugin.php"
@@ -32,6 +24,11 @@
                     "name": "amp_url_param"
                     ,"description": "Key of GET param to trigger AMP Template rendering. Overrides amp_context if set."
                 }]
+            }]
+            ,"snippets": [{
+                "name": "ampfilter",
+                "file": "ampfilter.snippet.php",
+                "description": "Output modifier to convert HTML to amp-compliant markup."
             }]
             ,"templates": [{
                 "name": "Sample AMP Template"
