@@ -16,7 +16,13 @@ class AMP_Img_Sanitizer extends AMP_Base_Sanitizer {
 
 	private static $script_slug = 'amp-anim';
 	private static $script_src = 'https://cdn.ampproject.org/v0/amp-anim-0.1.js';
-
+	
+	public $options = array();
+    public function __construct( $options = array() ) {
+        $this->options['animGifs'] = false;
+		$this->options = array_merge($this->options, $options);
+	}
+	
 	public function sanitize() {
     	
 		$nodes = $this->dom->getElementsByTagName( self::$tag );
@@ -55,7 +61,7 @@ class AMP_Img_Sanitizer extends AMP_Base_Sanitizer {
 
 			//$new_attributes = $this->enforce_sizes_attribute( $new_attributes );
 
-			if ( $this->is_gif_url( $new_attributes['src'] ) ) {
+			if ( $this->options['animGifs'] && $this->is_gif_url( $new_attributes['src'] ) ) {
 				$this->did_convert_elements = true;
 				$new_tag = 'amp-anim';
 			} else {
