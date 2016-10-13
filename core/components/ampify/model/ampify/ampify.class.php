@@ -60,6 +60,8 @@ class Ampify
     }    
     
     public function getAmp() {
+        // Don't use this method right now
+        return false;
         // Load AMP Library
         require_once($this->options['ampLibPath'] . 'vendor/autoload.php');
         return new Lullabot\AMP\AMP();    

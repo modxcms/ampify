@@ -21,7 +21,7 @@
  * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
  * Place, Suite 330, Boston, MA 02111-1307 USA
  **/
-$startTime = microtime();
+
 // Paths
 $ampifyPath = $modx->getOption('ampify.core_path', null, $modx->getOption('core_path') . 'components/ampify/');
 $ampifyPath .= 'model/ampify/';
@@ -33,14 +33,5 @@ if (!($ampify instanceof Ampify)) {
     return;
 }
 
-$ampLibrary = 'sterc';
-// Fetch AMP object
-
-if ($ampLibrary === 'sterc') {
-    $amp = $ampify->getAmpSterc($input, array(), array('img' => array()), array());
-    return $amp->get_amp_content() . '<pre>' . (microtime() - $startTime) . '</pre>';
-} else {
-    $amp = $ampify->getAmp();
-    $amp->loadHtml($input);
-    return $amp->convertToAmpHtml() . '<pre>' . (microtime() - $startTime) . '</pre>';  
-}
+$amp = $ampify->getAmpSterc($input, array(), array('img' => array()), array());
+return $amp->get_amp_content();
