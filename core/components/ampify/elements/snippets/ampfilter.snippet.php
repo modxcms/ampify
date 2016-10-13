@@ -33,5 +33,8 @@ if (!($ampify instanceof Ampify)) {
     return;
 }
 
-$amp = $ampify->getAmpSterc($input, array(), array('img' => array()), array());
+$sanitizers = $modx->fromJSON($modx->getOption('options', $scriptProperties, '{"img": []}', true));
+if (!is_array($sanitizers)) $sanitizers = array('img' => array());
+
+$amp = $ampify->getAmpSterc($input, array(), $sanitizers, array());
 return $amp->get_amp_content();
