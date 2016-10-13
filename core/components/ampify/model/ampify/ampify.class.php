@@ -22,7 +22,6 @@
  * Place, Suite 330, Boston, MA 02111-1307 USA
  **/
 
-
 class Ampify
 {
     public $modx = null;
@@ -46,6 +45,7 @@ class Ampify
             'corePath' => $corePath,
             'modelPath' => $corePath . 'model/',
             'ampLibPath' => $corePath . 'model/amp-library/',
+            'ampLibPathSterc' => $corePath . 'model/modx-amp/',
             'chunksPath' => $corePath . 'elements/chunks/',
             'snippetsPath' => $corePath . 'elements/snippets/',
             'templatesPath' => $corePath . 'templates/',
@@ -57,14 +57,29 @@ class Ampify
 
         ), $options);
         
-        // Load AMP Library
-        require_once($this->options['ampLibPath'] . 'vendor/autoload.php');
-        $this->amp = new Lullabot\AMP\AMP();   
     }    
     
     public function getAmp() {
-        return $this->amp;        
+        // Load AMP Library
+        require_once($this->options['ampLibPath'] . 'vendor/autoload.php');
+        return new Lullabot\AMP\AMP();    
     }
+    public function getAmpSterc($content, $embed_handler_classes, $sanitizers, $args = array()) {
+        // Load AMP Library
+        define('AMP__DIR__', rtrim($this->options['ampLibPathSterc'], '/'));
+        require_once($this->options['ampLibPathSterc'] . 'class-amp-content.php');
+        
+        // Load sanitizers
+        $sanitizer_classes = array();
+        foreach ($sanitizers as $sanitizer => $args) {
+            require_once($this->options['ampLibPathSterc'] . 'includes/sanitizers/class-amp-' . $sanitizer . '-sanitizer.php');
+            $sanitizer_classes['AMP_' . ucfirst($sanitizer) . '_Sanitizer'] = $args;
+        }
+        
+        return new AMP_Content($content, $embed_handler_classes, $sanitizer_classes, $args);
+        
+    }
+    
     /* UTILITY METHODS (@theboxer) */
     /**
      * Get a local configuration option or a namespaced system setting by key.
