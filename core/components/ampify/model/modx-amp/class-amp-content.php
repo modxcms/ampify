@@ -81,9 +81,9 @@ class AMP_Content {
 				_doing_it_wrong( __METHOD__, sprintf( __( 'Sanitizer (%s) must extend `AMP_Base_Sanitizer`', 'amp' ), esc_html( $sanitizer_class ) ), '0.1' );
 				continue;
 			}
+
 			$sanitizer->sanitize();
 			$this->add_scripts( $sanitizer->get_scripts() );
-			
 		}
 
 		return AMP_DOM_Utils::get_content_from_dom( $dom );

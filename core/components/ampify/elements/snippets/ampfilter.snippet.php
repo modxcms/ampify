@@ -38,9 +38,9 @@ $ampLibrary = 'sterc';
 
 if ($ampLibrary === 'sterc') {
     $amp = $ampify->getAmpSterc($input, array(), array('img' => array()), array());
-    return '<pre>' . (microtime() - $startTime) . '</pre>' . $amp->get_amp_content();
+    return $amp->get_amp_content() . '<pre>' . (microtime() - $startTime) . '</pre>';
 } else {
     $amp = $ampify->getAmp();
     $amp->loadHtml($input);
-    return '<pre>' . (microtime() - $startTime) . '</pre>' . $amp->convertToAmpHtml();  
+    return $amp->convertToAmpHtml() . '<pre>' . (microtime() - $startTime) . '</pre>';  
 }
