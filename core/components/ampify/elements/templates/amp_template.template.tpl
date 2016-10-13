@@ -13,13 +13,14 @@
         "datePublished": "[[*publishedon]]",
         "dateModified": "[[*editedon]]",
         "author": "[[++site_name]]",
-        "mainEntityOfPage": {
-         "@type": "WebPage",
-         "@id": "[[++site_url]]"
-        },
+        "mainEntityOfPage": "[[~[[*id]]? &scheme=`full`]]",
+        "author": {
+            "@type": "Person",
+            "name": "Wayne Roddy"   
+        }
         "publisher": {
          "@type": "Organization",
-         "name": "Wayne Roddy",
+         "name": "MODX Systems",
          "logo": {
             "@type": "ImageObject",
             "width": "50",
@@ -29,9 +30,9 @@
         },
         "image": {
             "@type": "ImageObject",
-            "width": "[[*page_img:imgattr=`width`]]",
-            "height": "[[*page_img:imgattr=`height`]]",
-            "url":"/[[*page_img]]"
+            "width": "[[*page_img:imgattr=`width`:default=`50`]]",
+            "height": "[[*page_img:imgattr=`height`:default=`48`]]",
+            "url":"[[*page_img:default=`http://flatso.clients.modxcloud.com/assets/mx-themes/images/modx-revo-2_3-icon.png`]]"
         }
       }
     </script>
