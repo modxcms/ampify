@@ -2,7 +2,8 @@
 
 require_once( AMP__DIR__ . '/includes/utils/class-amp-dom-utils.php' );
 require_once( AMP__DIR__ . '/includes/sanitizers/class-amp-base-sanitizer.php' );
-require_once( AMP__DIR__ . '/includes/embeds/class-amp-base-embed-handler.php' );
+// Embed handlers are full of WP-specific stuff we can't use
+//require_once( AMP__DIR__ . '/includes/embeds/class-amp-base-embed-handler.php' );
 
 class AMP_Content {
 	private $content;
@@ -32,10 +33,12 @@ class AMP_Content {
 	private function transform() {
 		$content = $this->content;
 
+        /* 
 		// First, embeds + the_content filter
 		$embed_handlers = $this->register_embed_handlers();
 		$this->unregister_embed_handlers( $embed_handlers );
-
+        */
+        
 		// Then, sanitize to strip and/or convert non-amp content
 		$content = $this->sanitize( $content );
 
@@ -45,7 +48,7 @@ class AMP_Content {
 	private function add_scripts( $scripts ) {
 		$this->amp_scripts = array_merge( $this->amp_scripts, $scripts );
 	}
-
+    /*
 	private function register_embed_handlers() {
 		$embed_handlers = array();
 
@@ -70,7 +73,7 @@ class AMP_Content {
 			 $embed_handler->unregister_embed();
 		}
 	}
-
+    */
 	private function sanitize( $content ) {
 		$dom = AMP_DOM_Utils::get_dom_from_content( $content );
 

@@ -40,7 +40,7 @@ abstract class AMP_Base_Sanitizer {
 			$max_width = $this->args['content_max_width'];
 		}
 
-		$attributes['sizes'] = sprintf( '(min-width: %1$dpx) %1$dpx, 100vw', absint( $max_width ) );
+		$attributes['sizes'] = sprintf( '(min-width: %1$dpx) %1$dpx, 100vw', abs(intval($max_width)) );
 
 		$this->add_or_append_attribute( $attributes, 'class', 'amp-wp-enforced-sizes' );
 

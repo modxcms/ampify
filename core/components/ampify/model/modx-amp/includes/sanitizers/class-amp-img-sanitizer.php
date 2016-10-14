@@ -1,7 +1,6 @@
 <?php
 
 require_once( AMP__DIR__ . '/includes/sanitizers/class-amp-base-sanitizer.php' );
-require_once( AMP__DIR__ . '/includes/utils/class-amp-image-dimension-extractor.php' );
 
 /**
  * Converts <img> tags to <amp-img> or <amp-anim>
@@ -50,10 +49,10 @@ class AMP_Img_Sanitizer extends AMP_Base_Sanitizer {
 				$new_attributes['width'] = isset( $this->args['content_max_width'] ) ? $this->args['content_max_width'] : self::FALLBACK_WIDTH;
 				$new_attributes['height'] = self::FALLBACK_HEIGHT;
 
-				//$this->add_or_append_attribute( $new_attributes, 'class', 'amp-wp-unknown-size' );
+				$this->add_or_append_attribute( $new_attributes, 'class', 'amp-wp-unknown-size' );
 			}
 
-			//$new_attributes = $this->enforce_sizes_attribute( $new_attributes );
+			$new_attributes = $this->enforce_sizes_attribute( $new_attributes );
 
 			if ( $this->args['animGifs'] && $this->is_gif_url( $new_attributes['src'] ) ) {
 				$this->did_convert_elements = true;
