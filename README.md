@@ -70,29 +70,29 @@ The default Plugin property values are:
 
 In this example, we'll install Ampify into an almost fresh MODX install, and use [Context Gateway](https://github.com/modxcms/context-gateway/) for Context routing. Both can be installed via the Extras Installer:
 
-![Extras Installer](https://www.dropbox.com/s/bjtk7auqs29a2tc/Screenshot%202016-08-24%2013.34.55.png?dl=1)
+![Extras Installer](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.34.55.png?dl=1)
 
 ### Create a new Context. 
 
 Hover over the cog icon in the top-right corner of the Manager, to reveal the "Contexts" menu item.
 
-![Contexts menu item](https://www.dropbox.com/s/q3667nsqlkdftrm/Screenshot%202016-08-24%2013.35.02.png?dl=1)
+![Contexts menu item](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.35.02.png?dl=1)
 
 In the Contexts view, click "Create New".
 
-![Create Context button](https://www.dropbox.com/s/0b1wx1jst8zrzoe/Screenshot%202016-08-24%2013.35.13.png?dl=1)
+![Create Context button](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.35.13.png?dl=1)
 
 Give the new Context a key, a user-friendly name, and optionally a description.
 
-![Create Context window](https://www.dropbox.com/s/ij1x80k4kjcw814/Screenshot%202016-08-24%2013.35.24.png?dl=1)
+![Create Context window](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.35.24.png?dl=1)
 
 Once the Context is created, you'll see it in the grid-list of Contexts. Right-click on it and select "Update Context".
 
-![Update Context](https://www.dropbox.com/s/xtwbmsga0gywsrl/Screenshot%202016-08-25%2008.34.43.png?dl=1)
+![Update Context](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-25%2008.34.43.png?dl=1)
 
 In the Context Edit view, select the tab "Context Settings".
 
-![Context Settings tab](https://www.dropbox.com/s/bdom7y9nhdzvwb4/Screenshot%202016-08-25%2008.35.20.png?dl=1)
+![Context Settings tab](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-25%2008.35.20.png?dl=1)
 
 If you're not familiar with Context Settings, here are the documentation pages for [Contexts](https://rtfm.modx.com/revolution/2.x/administering-your-site/contexts) and [System Settings](https://rtfm.modx.com/revolution/2.x/administering-your-site/settings), which you might find useful to review before moving on to the next step.
 
@@ -100,82 +100,82 @@ Click the "Create New" button. You'll need to create 5 new Context Settings, at 
 
 1. `ctx_alias` is a requirement of the Context Gateway router, and defines the URI-bit for this Context. You'll use this string again in other settings.
 
-![ctx_alias setting](https://www.dropbox.com/s/maeqsabh6xgm01x/Screenshot%202016-08-24%2013.37.42.png?dl=1)
+![ctx_alias setting](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.37.42.png?dl=1)
 
 2. `site_url` overrides the default System Setting, appending the `ctx_alias`.
 
-![site_url Context setting](https://www.dropbox.com/s/h0phk0a3jxecyac/Screenshot%202016-08-24%2013.37.26.png?dl=1)
+![site_url Context setting](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.37.26.png?dl=1)
 
 Notice the syntax `{site_url}amp/`. The part in curly braces references the default MODX `site_url` dynamically.
 
 3. `base_url` does essentially the same as `site_url` but for a specific component of the URL.
 
-![base_url setting](https://www.dropbox.com/s/rrudd40yilex9dr/Screenshot%202016-08-24%2013.37.34.png?dl=1)
+![base_url setting](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.37.34.png?dl=1)
 
 4. `site_start` and `error_page` should both have, as their values, the ID of the Resource that MODX will render as the "homepage" of the new Context. If you haven't created a Resource in the new Context yet, you can do so without leaving the current view, by right-clicking on the Context node in the Resource Tree, and selecting the "Quick Create" » "Document" option:
 
-![Quick Create](https://www.dropbox.com/s/g0l2ysnn600goei/Screenshot%202016-08-25%2008.44.35.png?dl=1)
+![Quick Create](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-25%2008.44.35.png?dl=1)
 
 Give the new Resource a title, and ensure it's published. Once you hit save, the Tree will refresh and you'll see the new Resource with it's ID in parenthesis:
 
-![Resource Tree](https://www.dropbox.com/s/0ws3ph6etnwx83p/Screenshot%202016-08-25%2008.47.02.png?dl=1)
+![Resource Tree](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-25%2008.47.02.png?dl=1)
 
 ### Friendly URL System Setting
 
 If you haven't already enabled Friendly URLs for your site, you'll need to do so for Ampify and Context Gateway to work. Hover over the cog icon again and chooose "System Settings".
 
-![System Settings menu item](https://www.dropbox.com/s/d921uwv7985tnaj/Screenshot%202016-08-25%2008.49.39.png?dl=1)
+![System Settings menu item](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-25%2008.49.39.png?dl=1)
 
 At the top of the grid, choose the "Friendly URL" option from the "Area" dropdown:
 
-![Area dropdown](https://www.dropbox.com/s/ygzp0f122kxi6nu/Screenshot%202016-08-24%2013.39.08.png?dl=1)
+![Area dropdown](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.39.08.png?dl=1)
 
 Locate the "Use Friendly URLs" setting and set it to "Yes".
 
-![FURLs](https://www.dropbox.com/s/tldqixi3od1zxbx/Screenshot%202016-08-24%2013.39.17.png?dl=1)
+![FURLs](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.39.17.png?dl=1)
 
 ### Plugin Properties
 
 Next you'll setup the AMPIFY Plugin's properties, without which the Plugin doesn't fire. You'll need the ID of the AMP Template that you want to use. Ampify installs a sample Template. 
 
-![sample AMP Template](https://www.dropbox.com/s/4z6y8btmhrlldxk/Screenshot%202016-08-24%2013.40.10.png?dl=1)
+![sample AMP Template](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.40.10.png?dl=1)
 
 In this installation the ID is `4`. In the "Elements" tab of the Tree, open the "Plugins" section if not already open, and locate the AMPIFY Plugin:
 
-![Elements Tree](https://www.dropbox.com/s/pchhh6x8r2ygo6v/Screenshot%202016-08-25%2008.57.17.png?dl=1)
+![Elements Tree](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-25%2008.57.17.png?dl=1)
 
-![AMPIFY Plugin edit](https://www.dropbox.com/s/qnlzvgp2ckcpovo/Screenshot%202016-08-24%2013.40.16.png?dl=1)
+![AMPIFY Plugin edit](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.40.16.png?dl=1)
 
 In the Plugin Edit view, select the "Properties" tab:
 
-![Plugin properties](https://www.dropbox.com/s/4n2v1hlidff6o0d/Screenshot%202016-08-24%2013.41.06.png?dl=1)
+![Plugin properties](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.41.06.png?dl=1)
 
 Click the button "Add Property Set". It's recommended to use a custom property set that will not be overwritten when you update the Extra.
 
-![Add Property Set](https://www.dropbox.com/s/15azi5ew1qaospd/Screenshot%202016-08-25%2008.57.54.png?dl=1)
+![Add Property Set](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-25%2008.57.54.png?dl=1)
 
 In the "Add Property Set" window, select "Create New Property Set" and give it a name:
 
-![Add Property Set Window](https://www.dropbox.com/s/88ykgwu1gaxf8rt/Screenshot%202016-08-24%2013.41.32.png?dl=1)
+![Add Property Set Window](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.41.32.png?dl=1)
 
 Hit save. In the property set dropdown, select your new set:
 
-![Dropdown](https://www.dropbox.com/s/m1rpirfjq6ytu84/Screenshot%202016-08-24%2013.41.41.png?dl=1)
+![Dropdown](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-24%2013.41.41.png?dl=1)
 
 Modify the property values, as per your desired configuration. In this implementation, we'll add the Context Key and Template ID:
 
-![Property set for AMP](https://www.dropbox.com/s/yg6o0byqa23o6c0/Screenshot%202016-08-25%2009.00.07.png?dl=1)
+![Property set for AMP](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-25%2009.00.07.png?dl=1)
 
 Save the property set.
 
-![Save property set](https://www.dropbox.com/s/vaptd1jvv1lptbc/Screenshot%202016-08-25%2009.17.28.png?dl=1)
+![Save property set](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-25%2009.17.28.png?dl=1)
 
 You'll also need to select the custom property set for the Plugin's Event triggers. Go to the "System Events" tab, and select the custom property set for both enabled Events:
 
-![Plugin Events](https://www.dropbox.com/s/340mkcn5dtua0pf/Screenshot%202016-08-25%2009.19.06.png?dl=1)
+![Plugin Events](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-25%2009.19.06.png?dl=1)
 
 Don't forget to "Save" the Plugin!
 
-![Save Plugin](https://www.dropbox.com/s/44rseg3gfbwuzj2/Screenshot%202016-08-25%2009.19.22.png?dl=1)
+![Save Plugin](https://www.sepiariver.ca/assets/uploads/images/Screenshot%202016-08-25%2009.19.22.png?dl=1)
 
 Now the Plugin should be running in 'context' mode. When you save a Resource, it will be added to the `ContextResource` table for the `amp` Context. The AMP view for the Resource will be a the Resource's URI, prefixed with the `ctx_alias`:  `amp/`.
