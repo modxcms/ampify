@@ -62,9 +62,9 @@ The default Plugin property values are:
 - `amp_context` = `""` If this property is empty or doesn't contain a valid Context key, the Plugin will try to run in 'param' mode.
 - `amp_url_param` = `""` If this property is set, it will override the `amp_context` property and trigger the AMP Template view if a GET param with the specified key is set in the URL string. If this property is empty and `amp_context` is also empty, the Plugin effectively does nothing.
 - `amp_template` = `""` This property is required. At least 1 Template must be dedicated to an AMP view, and that Template's ID set here, in order for the Plugin to work at all.
-- `amp_tv` = `""` If a valid TV **name** is entered here, it will transform the Plugin's actions in the following way:
+- `amp_tv` = `""` If a valid TV **name** (default pre installed `amp_template` TV can be used) is entered here, it will transform the Plugin's actions in the following way:
     - `OnLoadWebDocument` it will switch the Template of the Resource to the one specified in the TV with name `amp_tv`, falling back to the default set in `amp_template`
-    - `OnDocFormSave` it will _only_ add the Resource to the table for automatic routing if there's a truth-y value in the TV with name `amp_tv`. If the TV is empty or false-y, it will remove the Resource from the table. This provides primitive "remove" functionality until such time a CMP is made to manage ContextResources.
+    - `OnDocFormSave` it will _only_ add the Resource to the table for automatic routing if there's a truth-y value in the TV mentioned in `amp_tv` parameter. If the TV is empty or false-y, it will remove the Resource from the table. This provides primitive "remove" functionality until such time a CMP is made to manage ContextResources.
 
 ## Example Implementation
 
